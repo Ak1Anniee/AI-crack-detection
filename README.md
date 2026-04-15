@@ -74,12 +74,13 @@
    ```bash
    npm start
 
-The frontend will open at http://localhost:5173 and the backend will run at http://localhost:3001.
+   The frontend will open at http://localhost:5173 and the backend will run at http://localhost:3001.
 
+---
 
-**📝Disclaimer:**
+## 📝 Disclaimer:
 
 This tool is a prototype designed for educational and preliminary assessment purposes. It is not a replacement for a professional inspection by a licensed structural engineer.
 
-
-**Developed by Ak1Anniee**
+---
+**Developed by [Aniruddh Kumar](https://github.com/Ak1Anniee)**
