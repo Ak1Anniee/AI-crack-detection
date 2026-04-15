@@ -57,29 +57,29 @@
    ```bash
    git clone [https://github.com/Ak1Anniee/AI-crack-detection.git](https://github.com/Ak1Anniee/AI-crack-detection.git)
    cd AI-crack-detection
-2. Install dependencies:
-
-npm install
-
-
-3. Configure Environment Variables:
-
-Create a .env file in the root directory:
-
-GEMINI_API_KEY=your_api_key_here
-PORT=3001
+2. **Install dependencies:**
+   ```bash
+   npm install
 
 
-4. Run the Application:
+3. **Configure Environment Variables:**
 
-npm start
+   Create a .env file in the root directory:
+   ```bash
+   GEMINI_API_KEY=your_api_key_here
+   PORT=3001
+
+
+4. **Run the Application:**
+   ```bash
+   npm start
 
 The frontend will open at http://localhost:5173 and the backend will run at http://localhost:3001.
 
 
-Disclaimer:
+**📝Disclaimer:**
 
 This tool is a prototype designed for educational and preliminary assessment purposes. It is not a replacement for a professional inspection by a licensed structural engineer.
 
 
-Developed by Ak1Anniee
+**Developed by Ak1Anniee**
