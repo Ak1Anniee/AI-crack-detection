@@ -1,14 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   UploadCloud, AlertTriangle, CheckCircle, Loader2, RefreshCw, 
-  Brain, BarChart, ClipboardCheck, ChevronRight, Target, Zap, Code, Info, Search, Cpu, FileText, ArrowLeft 
+  Brain, BarChart, ClipboardCheck, ChevronRight, Target, Zap, Code, Info, Search, Cpu, FileText, ArrowLeft,
+  Linkedin, Github, Mail // <-- ADDED FOR TEAM PAGE
 } from 'lucide-react';
 
+// 🔽 TEAM DATA ADDED HERE 🔽
+const teamMembers = [
+  {
+    name: "Aniruddh Kumar",
+    role: "Backend Development",
+    image: "https://github.com/Ak1Anniee.png", 
+    linkedin: "https://www.linkedin.com/in/aniruddh-kumar-436a24216",
+    github: "https://github.com/Ak1Anniee",
+    email: "ani.anuamit34@gmail.com"
+  },
+  {
+    name: "Aryan Bansal",
+    role: "Frontend Development",
+    image: "https://github.com/Aryan-bnsl.png", 
+    linkedin: "https://www.linkedin.com/in/aryanbnsl890",
+    github: "https://github.com/Aryan-bnsl"
+  },
+  {
+    name: "Parth Parashar",
+    role: "AI Integration",
+    image: "https://github.com/parth123543.png", 
+    linkedin: "https://www.linkedin.com/in/parth-parashar-53a106310",
+    github: "https://github.com/parth123543"
+  }
+];
+
 function App() {
-  // Navigation State: 'landing', 'app', 'how-it-works'
-  const [view, setView] = useState('landing'); // 'landing', 'how-it-works', 'app'
-  // Existing states
+  // Navigation State: 'landing', 'app', 'how-it-works', 'team'
+  const [view, setView] = useState('landing'); 
   
+  // Existing states
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -140,6 +167,76 @@ function App() {
   }
 
   // ══════════════════════════════════════════════════════════════
+  // PAGE: TEAM / CONTACTS (ADDED)
+  // ══════════════════════════════════════════════════════════════
+  if (view === 'team') {
+    return (
+      <div className="min-h-screen bg-[#0d0f14] text-[#e8eaf0] font-dm py-12 px-6 animate-in fade-in duration-500">
+        <div className="max-w-5xl mx-auto">
+          <button 
+            onClick={() => setView('landing')} 
+            className="text-[#7a8399] hover:text-white mb-12 flex items-center transition-colors font-syne font-bold uppercase tracking-widest text-xs"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
+          </button>
+          
+          {/* Header Section */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-[#f97316]/10 border border-[#f97316]/30 px-4 py-1.5 rounded-full mb-6">
+              <span className="text-[#f97316] text-xs font-bold uppercase tracking-widest">The Creators</span>
+            </div>
+            <h2 className="font-syne text-4xl md:text-5xl font-bold text-white mb-6">
+              Meet the <span className="text-[#f97316]">Team</span>
+            </h2>
+            <p className="text-[#7a8399] text-lg max-w-2xl mx-auto leading-relaxed">
+              We are a dedicated team of students from <span className="text-white font-semibold">Bennett University</span>, leveraging advanced AI and modern web technologies to build intelligent structural analysis solutions.
+            </p>
+          </div>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <div 
+                key={index} 
+                className="bg-[#161a22] border border-[#2a3044] rounded-2xl p-8 text-center hover:border-[#f97316]/50 transition-all duration-300 group hover:-translate-y-2 shadow-xl"
+              >
+                {/* Image Container */}
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-6 border-4 border-[#1c2130] group-hover:border-[#f97316]/50 transition-colors duration-300 shadow-inner">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Name & Role */}
+                <h3 className="font-syne text-2xl font-bold text-white mb-2">{member.name}</h3>
+                <p className="text-[#f97316] font-medium mb-8 uppercase tracking-wider text-xs">
+                  {member.role}
+                </p>
+
+                {/* Social Links */}
+                <div className="flex items-center justify-center space-x-4 border-t border-[#2a3044] pt-6">
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#7a8399] hover:text-[#0a66c2] transition-colors bg-[#1c2130] p-3 rounded-full hover:bg-white" title="LinkedIn">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-[#7a8399] hover:text-white transition-colors bg-[#1c2130] p-3 rounded-full hover:bg-[#2a3044]" title="GitHub">
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a href={`mailto:${member.email}`} className="text-[#7a8399] hover:text-[#f97316] transition-colors bg-[#1c2130] p-3 rounded-full hover:bg-[#2a3044]" title="Email">
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  // ══════════════════════════════════════════════════════════════
   // LANDING PAGE RENDER
   // ══════════════════════════════════════════════════════════════
   if (view === 'landing') {
@@ -154,9 +251,10 @@ function App() {
             CrackDetect <span className="text-[#f97316]">AI</span>
           </div>
           <div className="hidden md:flex space-x-8 text-sm font-medium text-[#7a8399]">
-            <a href="#" className="hover:text-white transition-colors">Features</a>
+            {/* UPDATED NAVIGATION TO INCLUDE 'TEAM' */}
+            <button onClick={() => setView('team')} className="hover:text-white transition-colors">Team</button>
             <button onClick={() => setView('how-it-works')} className="hover:text-white transition-colors">How it Works</button>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="https://github.com/Ak1Anniee/AI-crack-detection" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Documentation</a>
           </div>
         </nav>
 
@@ -264,8 +362,8 @@ function App() {
         {/* ══ STEP 1: UPLOAD ══ */}
         <section className="bg-[#161a22] border border-[#2a3044] rounded-2xl p-6 md:p-8 shadow-2xl">
           <div className="text-[#f97316] font-syne font-bold uppercase tracking-wider text-sm mb-6 flex items-center">
-            <span className="w-8 h-8 rounded-full bg-[#f97316]/10 flex items-center justify-center mr-3 border border-[#f97316]/20">•</span>
-            Image Upload
+            <span className="w-8 h-8 rounded-full bg-[#f97316]/10 flex items-center justify-center mr-3 border border-[#f97316]/20">1</span>
+            Step 1: Image Upload
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
