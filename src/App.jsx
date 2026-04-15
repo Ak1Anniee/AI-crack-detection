@@ -264,8 +264,8 @@ function App() {
         {/* ══ STEP 1: UPLOAD ══ */}
         <section className="bg-[#161a22] border border-[#2a3044] rounded-2xl p-6 md:p-8 shadow-2xl">
           <div className="text-[#f97316] font-syne font-bold uppercase tracking-wider text-sm mb-6 flex items-center">
-            <span className="w-8 h-8 rounded-full bg-[#f97316]/10 flex items-center justify-center mr-3 border border-[#f97316]/20">1</span>
-            Step 1: Image Upload
+            <span className="w-8 h-8 rounded-full bg-[#f97316]/10 flex items-center justify-center mr-3 border border-[#f97316]/20">•</span>
+            Image Upload
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
