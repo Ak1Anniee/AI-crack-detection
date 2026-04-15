@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   UploadCloud, AlertTriangle, CheckCircle, Loader2, RefreshCw, 
-  Brain, BarChart, ClipboardCheck, ChevronRight, Target, Zap, Code 
+  Brain, BarChart, ClipboardCheck, ChevronRight, Target, Zap, Code, Info, Search, Cpu, FileText, ArrowLeft 
 } from 'lucide-react';
 
 function App() {
-  // New state to control which page is showing
-  const [isAppStarted, setIsAppStarted] = useState(false);
-  
+  // Navigation State: 'landing', 'app', 'how-it-works'
+  const [view, setView] = useState('landing'); // 'landing', 'how-it-works', 'app'
   // Existing states
+  
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -77,9 +77,72 @@ function App() {
   };
 
   // ══════════════════════════════════════════════════════════════
+  // PAGE: HOW IT WORKS
+  // ══════════════════════════════════════════════════════════════
+  if (view === 'how-it-works') {
+    return (
+      <div className="min-h-screen bg-[#0d0f14] text-[#e8eaf0] font-dm p-6 md:p-12 animate-in fade-in duration-500">
+        <div className="max-w-4xl mx-auto">
+          <button 
+            onClick={() => setView('landing')} 
+            className="text-[#7a8399] hover:text-white mb-8 flex items-center transition-colors font-syne font-bold uppercase tracking-widest text-xs"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
+          </button>
+          
+          <h2 className="font-syne text-4xl font-bold text-white mb-6">How <span className="text-[#f97316]">CrackDetect AI</span> Works</h2>
+          <p className="text-[#7a8399] text-lg mb-12 max-w-2xl">Our system leverages advanced multimodal Large Language Models (LLMs) to perform structural diagnostics that previously required manual inspection.</p>
+
+          <div className="grid grid-cols-1 gap-6">
+            <div className="bg-[#161a22] border border-[#2a3044] p-8 rounded-2xl flex items-start space-x-6">
+              <div className="bg-[#f97316]/10 p-4 rounded-xl border border-[#f97316]/20 text-[#f97316]">
+                <Search className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="font-syne text-xl font-bold text-white mb-2">Step 1: Visual Scanning</h3>
+                <p className="text-[#7a8399] leading-relaxed">When you upload an image, our system performs high-resolution pre-processing to identify visual anomalies, surface textures, and depth patterns often associated with structural fatigue.</p>
+              </div>
+            </div>
+
+            <div className="bg-[#161a22] border border-[#2a3044] p-8 rounded-2xl flex items-start space-x-6">
+              <div className="bg-[#f97316]/10 p-4 rounded-xl border border-[#f97316]/20 text-[#f97316]">
+                <Cpu className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="font-syne text-xl font-bold text-white mb-2">Step 2: Neural Analysis</h3>
+                <p className="text-[#7a8399] leading-relaxed">The image is processed by Gemini 2.5 Flash. It evaluates the 'crack geometry'—analyzing width, orientation (vertical vs. horizontal), and intersection points to determine if the issue is cosmetic or structural.</p>
+              </div>
+            </div>
+
+            <div className="bg-[#161a22] border border-[#2a3044] p-8 rounded-2xl flex items-start space-x-6">
+              <div className="bg-[#f97316]/10 p-4 rounded-xl border border-[#f97316]/20 text-[#f97316]">
+                <FileText className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="font-syne text-xl font-bold text-white mb-2">Step 3: Engineering Report</h3>
+                <p className="text-[#7a8399] leading-relaxed">Finally, the system generates a structured JSON report. It provides a severity score and specific engineering recommendations based on established civil engineering safety standards.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 p-8 border border-[#f97316]/20 bg-[#f97316]/5 rounded-2xl text-center">
+            <h4 className="font-syne text-white font-bold mb-2">Ready to test a structure?</h4>
+            <button 
+              onClick={() => setView('app')}
+              className="mt-4 bg-[#f97316] text-white font-syne font-bold py-4 px-10 rounded-xl hover:bg-[#ea580c] transition-all shadow-lg shadow-[#f97316]/20"
+            >
+              Go to Scanner
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ══════════════════════════════════════════════════════════════
   // LANDING PAGE RENDER
   // ══════════════════════════════════════════════════════════════
-  if (!isAppStarted) {
+  if (view === 'landing') {
     return (
       <div className="min-h-screen bg-[#0d0f14] text-[#e8eaf0] font-dm relative overflow-hidden flex flex-col">
         {/* Subtle background glow effect */}
@@ -92,7 +155,7 @@ function App() {
           </div>
           <div className="hidden md:flex space-x-8 text-sm font-medium text-[#7a8399]">
             <a href="#" className="hover:text-white transition-colors">Features</a>
-            <a href="#" className="hover:text-white transition-colors">How it Works</a>
+            <button onClick={() => setView('how-it-works')} className="hover:text-white transition-colors">How it Works</button>
             <a href="#" className="hover:text-white transition-colors">Contact</a>
           </div>
         </nav>
@@ -115,14 +178,16 @@ function App() {
           
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-20">
             <button 
-              onClick={() => setIsAppStarted(true)}
+              onClick={() => setView('app')}
               className="w-full sm:w-auto bg-[#f97316] hover:bg-[#ea580c] text-white font-syne font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center text-lg shadow-[0_0_30px_rgba(249,115,22,0.3)] hover:shadow-[0_0_40px_rgba(249,115,22,0.5)] hover:-translate-y-1"
             >
               Start Analysis <ChevronRight className="w-5 h-5 ml-2" />
             </button>
-            <button className="w-full sm:w-auto bg-transparent border border-[#2a3044] hover:bg-[#161a22] hover:border-[#7a8399] text-white font-syne font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center text-lg">
-              View Documentation
-            </button>
+            <a href="https://github.com/Ak1Anniee/AI-crack-detection" target="_blank" rel="noopener noreferrer">
+                <button className="w-full sm:w-auto bg-transparent border border-[#2a3044] hover:bg-[#161a22] hover:border-[#7a8399] text-white font-syne font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center text-lg">
+                View Documentation
+              </button>
+            </a>
           </div>
 
           {/* Stats / Trust Banner */}
@@ -180,7 +245,7 @@ function App() {
         
         {/* Navigation back to landing page */}
         <button 
-          onClick={() => setIsAppStarted(false)} 
+          onClick={() => setView('landing')} 
           className="text-[#7a8399] hover:text-white flex items-center text-sm font-medium transition-colors mb-[-1rem] pt-4"
         >
           ← Back to Home
