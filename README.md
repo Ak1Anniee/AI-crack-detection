@@ -1,25 +1,85 @@
-# Building Crack Detection Web App
+# 🏗️ CrackDetect AI: Intelligent Structural Analysis
 
-A full-stack AI web application that analyzes building surfaces for cracks using Anthropic's Claude Vision AI.
+[![Status](https://img.shields.io/badge/Status-Prototype-orange)](#)
+[![Tech](https://img.shields.io/badge/Tech-React%20%2B%20Node.js-blue)](#)
+[![AI](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-green)](#)
 
-## Prerequisites
+**CrackDetect AI** is a professional-grade structural health monitoring tool that leverages advanced computer vision to identify, analyze, and grade building cracks in real-time. Designed for civil engineers and safety inspectors, it provides instant diagnostic reports and actionable repair recommendations.
 
-Before starting, you need two things:
-1. **Node.js**: This is the software that runs our code. Download and install the "LTS" (Long Term Support) version from here: https://nodejs.org/
-2. **Anthropic API Key**: This lets our app talk to Claude. Create an account and get an API key here: https://console.anthropic.com/
+---
 
-## Setup Instructions
+## 📸 Live Demo
 
-1. Open your terminal (Command Prompt on Windows, Terminal on Mac) and navigate to the folder where you extracted these files.
-2. Rename the `.env.example` file to `.env`.
-3. Open the `.env` file in a text editor and paste your Anthropic API key where it says `your_actual_api_key_here`.
+<p align="center">
+  <img src="demo.gif" alt="CrackDetect AI Demo" width="800">
+</p>
 
-## Running the App
+*The video above demonstrates the full workflow: from the landing page to image upload, real-time AI processing buffer, and final structural diagnostic results.*
 
-Run these commands in your terminal:
-1. `npm install`
-2. `npm start`
-3. Open your web browser and go to: `http://localhost:5173`
+---
 
-## Stopping the App
-To stop the application, go to your terminal window where the app is running and press `Ctrl + C` on your keyboard, then press `Y` and `Enter` to confirm.\n
+## 🚀 Key Features
+
+* **Intelligent Vision:** Detects micro-fractures and structural displacement using Gemini 2.5 Flash.
+* **Severity Grading:** Automatically classifies risks into **Low**, **Medium**, **High**, or **Critical**.
+* **Instant Recommendations:** Generates actionable next steps based on structural engineering logic.
+* **Modern UI/UX:** Built with React and Tailwind CSS, featuring a premium dark theme with "Syne" and "DM Sans" typography.
+* **Processing Buffer:** Includes a full-screen blurred loading overlay for a seamless professional feel.
+
+---
+
+## 🖼️ Interface Gallery
+
+<p align="center">
+  <img src="Screenshot-1.png" width="45%" alt="Home Page" />
+  <img src="Screenshot-2.png" width="45%" alt="Analysis Page" />
+</p>
+
+---
+
+## 🛠️ Technical Stack
+
+**Frontend:**
+* **React.js** - UI Component logic
+* **Tailwind CSS** - Modern styling and layout
+* **Lucide React** - High-quality iconography
+
+**Backend:**
+* **Node.js & Express** - Server architecture
+* **Google Generative AI** - Gemini 2.5 Flash Vision API
+* **Multer** - Secure image buffer handling
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Ak1Anniee/AI-crack-detection.git](https://github.com/Ak1Anniee/AI-crack-detection.git)
+   cd AI-crack-detection
+2. Install dependencies:
+
+npm install
+
+
+3. Configure Environment Variables:
+
+Create a .env file in the root directory:
+
+GEMINI_API_KEY=your_api_key_here
+PORT=3001
+
+
+4. Run the Application:
+
+npm start
+
+The frontend will open at http://localhost:5173 and the backend will run at http://localhost:3001.
+
+
+Disclaimer:
+
+This tool is a prototype designed for educational and preliminary assessment purposes. It is not a replacement for a professional inspection by a licensed structural engineer.
+
+
+Developed by Ak1Anniee
