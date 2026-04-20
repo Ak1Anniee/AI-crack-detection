@@ -38,7 +38,7 @@ app.post('/api/analyze', upload.single('image'), async (req, res) => {
 
     // Configure the new Gemini 2.5 Flash model
     const model = genAI.getGenerativeModel({ 
-      model: "gemni-2.5-flash", 
+      model: "gemini-2.5-flash", 
       // This is a special Gemini feature that forces it to reply in perfect JSON!
       generationConfig: {
         responseMimeType: "application/json",
